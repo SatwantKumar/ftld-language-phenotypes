@@ -21,7 +21,7 @@ Maintainer: Satwant Kumar (`Satwant.Dagar@gmail.com`)
   - `OPENAI_API_KEY` (required for extraction + Phase C labeling)
   - `NCBI_EMAIL` / `NCBI_API_KEY` (recommended for PMC/PubMed calls)
 
-## Reproduce the PMC OA analysis (high level)
+## Reproduce the PMC OA analysis
 See `docs/PMC_OA_WORKFLOW.md` for the detailed workflow. The core steps are:
 
 1. Use the locked registry (recommended):
