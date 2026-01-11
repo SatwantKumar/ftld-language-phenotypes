@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+*.egg-info/
+.venv/
+venv/
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Local configs
+configs/project.yaml
+
+# Data + derived artifacts (not tracked in the public repo)
+data/**
+!data/**/.gitkeep
+!data/README.md
+
+# Pipeline outputs can include per-case labels and rating workbooks. Keep untracked.
+results/**
+!results/.gitkeep
+!results/README.md
+
+# Manuscript sources (excluded from this public repo)
+manuscript/
+
+# Avoid accidental uploads of rater workbooks / spreadsheets
+*.xlsx
+
+# IRB/admin PDFs (keep private unless explicitly intended)
+IRB*.pdf
+
+# OS
+.DS_Store

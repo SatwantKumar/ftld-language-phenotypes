@@ -1,0 +1,34 @@
+version: 1
+backend: ncbi_eutils
+
+ncbi:
+  # We query the PMC database directly and require `open access[filter]` in the term.
+  # Optional: set `NCBI_EMAIL` and `NCBI_API_KEY` env vars to be a good API citizen / reduce rate limits.
+  db: pmc
+  tool: paperjn
+  tool_env: NCBI_TOOL
+  email_env: NCBI_EMAIL
+  api_key_env: NCBI_API_KEY
+  request_delay_s: 0.35
+
+# Query terms are stored here (auditable and publication-ready).
+# Start broad; you will screen down to eligible papers before any analysis.
+queries:
+  - id: ftld_case_reports_oa_v1
+    description: >
+      PMC Open Access case reports/series likely to contain narrative clinical descriptions relevant to FTLD/PPA phenotypes.
+    term: >
+      (("frontotemporal dementia" OR "frontotemporal lobar degeneration" OR "primary progressive aphasia"
+        OR bvftd OR svppa OR nfvppa OR lvppa OR "progressive supranuclear palsy"
+        OR "corticobasal syndrome" OR "corticobasal degeneration" OR "ftd-mnd")
+       AND ("case report" OR "case series" OR "case presentation"))
+      AND open access[filter]
+
+split:
+  # Deterministic: choose the year cutoff that best balances n<=year vs n>year,
+  # subject to `min_per_split` if feasible.
+  strategy: time_balance
+  # Locked based on the query result size (see generated split_recommendation JSON).
+  cutoff_year: 2021
+  min_per_split: 200
+  tie_breaker: earlier

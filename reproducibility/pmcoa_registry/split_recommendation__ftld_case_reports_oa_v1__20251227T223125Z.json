@@ -1,0 +1,8 @@
+{
+  "cutoff_year": 2021,
+  "n_discovery": 2526,
+  "n_confirmation": 2830,
+  "min_per_split": 200,
+  "tie_breaker": "earlier",
+  "note": "Balanced split (meets min_per_split)."
+}

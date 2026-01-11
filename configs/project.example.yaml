@@ -1,0 +1,80 @@
+# Project configuration (copy to configs/project.yaml for local runs)
+
+random_seed: 42
+
+columns:
+  stage: "Temporal Stage"
+  subtype: "Subtype"
+  text: "Description"
+
+stages: ["Early", "Middle", "Late"]
+
+phenotypes:
+  # How we identify PPA variants from the Subtype column (case-insensitive substring match).
+  ppa_markers: ["svppa", "nfvppa", "lvppa"]
+
+leakage_blacklist:
+  # Subtype tokens / near-synonyms (case-insensitive); extend as needed.
+  - "bvftd"
+  - "behavioral variant"
+  - "svppa"
+  - "semantic variant"
+  - "nfvppa"
+  - "nonfluent"
+  - "non-fluent"
+  - "agrammatic"
+  - "lvppa"
+  - "logopenic"
+  - "psp"
+  - "progressive supranuclear palsy"
+  - "cbs"
+  - "corticobasal"
+  - "mnd"
+  - "motor neuron disease"
+  - "ftd-tdp"
+  - "tDP-43"
+  - "ftd-tau"
+  - "rtftd"
+  - "right temporal"
+
+embeddings:
+  model_name: "BAAI/bge-small-en-v1.5"
+  sensitivity_model_names:
+    - "intfloat/e5-small-v2"
+  normalize_embeddings: true
+  batch_size: 64
+  device: null  # e.g., "cpu", "mps", "cuda"
+
+dimensionality_reduction:
+  method: "pca"
+  pca_variance_threshold: 0.95
+  pca_max_components: 50
+
+clustering:
+  algorithm: "kmeans"   # "kmeans" (primary), others are sensitivity
+  k_strategy: "fixed"   # "fixed" or "silhouette"
+  k_fixed: 4
+  k_sensitivity_values: [3, 4, 5, 6]
+  k_min: 2
+  k_max: 10
+
+inference:
+  permutations: 5000
+  family_fdr_q: 0.05
+
+paths:
+  curated_input_csv: "data/raw/curated_ftd_table.csv"
+  interim_dir: "data/interim"
+  processed_dir: "data/processed"
+  results_dir: "results"
+
+stability:
+  n_bootstrap: 200
+  subsample_fraction: 0.8
+  seed_values: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+literature:
+  corpus_csv: "data/processed/literature_corpus.csv"
+  text_column: "text"
+  is_ppa_column: "is_ppa"
+  doc_id_column: "doc_id"

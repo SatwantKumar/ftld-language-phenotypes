@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the associated manuscript/preprint (manuscript sources are not included in this public repo)."
+title: "Language-Dominant Phenotypes in FTLD-Spectrum Narratives (PMC Open Access)"
+type: software
+authors:
+  - family-names: "Kumar"
+    given-names: "Satwant"
+    email: "Satwant.Dagar@gmail.com"
+repository-code: "https://github.com/SatwanKumar/ftld-language-phenotypes"
+url: "https://github.com/SatwanKumar/ftld-language-phenotypes"
