@@ -1,5 +1,7 @@
 # Language-Dominant Phenotypes in FTLD-Spectrum Narratives (PMC Open Access)
 
+[![DOI](https://zenodo.org/badge/1132301840.svg)](https://doi.org/10.5281/zenodo.18215816)
+
 This repository contains a reproducible, auditable analysis pipeline (`paperjn`, under `src/paperjn/`) and
 high-level analysis documentation for the study **Language-Dominant Phenotypes in the Frontotemporal Lobar
 Degeneration Spectrum**.
@@ -43,3 +45,4 @@ extracted narrative text, downloaded full text).
 
 ## Citation
 - See `CITATION.cff`
+- Zenodo archive: https://doi.org/10.5281/zenodo.18215816
